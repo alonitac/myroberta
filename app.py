@@ -1,4 +1,4 @@
-from flask import Flask, request
+from flask import Flask, request, render_template
 from transformers import pipeline
 import textstat
 from cache import get_from_cache, put_in_cache
@@ -8,13 +8,18 @@ pipe = pipeline("text-classification", model="./roberta-base-go_emotions")
 app = Flask(__name__)
 
 
+@app.route('/')
+def index():
+    return render_template('index.html')
+
+
 @app.route('/readability')
 def readability():
     text = request.args.get('text')
     return textstat.flesch_kincaid_grade(text)
 
 
-@app.route('/analyze')
+@app.route('/analyze', methods=['POST'])
 def analyze():
     text = request.args.get('text')
     result = get_from_cache(text)
