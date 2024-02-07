@@ -2,10 +2,14 @@ pipeline {
     agent any
 
     stages {
+        stage('Install requirements'){
+            steps {
+                sh 'pip install pytest pylint'
+            }
+        }
         stage('Unittest') {
             steps {
                 sh '''
-                pip install pytest
                 python3 -m pytest --junitxml results.xml tests
                 '''
             }
