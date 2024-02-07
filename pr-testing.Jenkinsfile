@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Unittest') {
             steps {
-                sh 'echo "testing"'
+                sh 'exit 1'
             }
         }
         stage('Lint') {
