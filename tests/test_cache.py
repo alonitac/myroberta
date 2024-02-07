@@ -1,6 +1,5 @@
 import unittest
 from cache import get_from_cache, put_in_cache, cache_max_size
-from cache import put_in_cache
 
 
 class TestCacheFunctions(unittest.TestCase):
