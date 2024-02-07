@@ -430,8 +430,8 @@ disable=raw-checker-failed,
         deprecated-pragma,
         use-implicit-booleaness-not-comparison-to-string,
         use-implicit-booleaness-not-comparison-to-zero,
-        use-symbolic-message-instead
-        missing-function-docstring
+        use-symbolic-message-instead,
+        missing-function-docstring,
         missing-module-docstring
 
 # Enable the message, report, category or checker with the given id(s). You can

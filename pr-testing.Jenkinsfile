@@ -19,6 +19,7 @@ pipeline {
                 }
             }
         }
+
         stage('Lint') {
             steps {
                 sh 'python3 -m pylint *.py'
