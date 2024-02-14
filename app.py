@@ -1,16 +1,12 @@
-from flask import Flask, request, render_template
+from flask import Flask, request
 from transformers import pipeline
 import textstat
 from cache import get_from_cache, put_in_cache
 
-pipe = pipeline("text-classification", model="./roberta-base-go_emotions")
+# During the first run, the model files would be downloaded in ~/.cache/huggingface/hub
+pipe = pipeline("text-classification", model="SamLowe/roberta-base-go_emotions")
 
 app = Flask(__name__)
-
-
-@app.route('/')
-def index():
-    return render_template('index.html')
 
 
 @app.route('/readability')
@@ -19,7 +15,7 @@ def readability():
     return textstat.flesch_kincaid_grade(text)
 
 
-@app.route('/analyze', methods=['POST'])
+@app.route('/analyze')
 def analyze():
     text = request.args.get('text')
     result = get_from_cache(text)
