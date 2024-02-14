@@ -1,5 +1,11 @@
 pipeline {
-    agent any
+    agent {
+        label "general"
+        docker {
+            image '352708296901.dkr.ecr.us-east-2.amazonaws.com/alonit-jenkins-agent:0.1'
+            args  '--user root -v /var/run/docker.sock:/var/run/docker.sock'
+        }
+    }
 
     environment {
         ECR_URL = "700935310038.dkr.ecr.eu-north-1.amazonaws.com"
