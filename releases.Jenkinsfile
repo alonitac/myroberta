@@ -11,7 +11,7 @@ pipeline {
                     git checkout releases
                     git merge origin/main
 
-                    sed -i 's/image: .*/image: $POLYBOT_PROD_IMG_URL/g' k8s/prod/polybot.yaml
+                    sed -i "s|image: .*|image: ${POLYBOT_PROD_IMG_URL}|g" k8s/prod/polybot.yaml
 
                     cat k8s/prod/polybot.yaml
 
