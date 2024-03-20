@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: server
-        image: $POLYBOT_PROD_IMG_URL
+        image: sdsddsfsdf
 ---
 apiVersion: v1
 kind: Service
