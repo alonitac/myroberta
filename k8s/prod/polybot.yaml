@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: server
-        image: 352708296901.dkr.ecr.eu-north-1.amazonaws.com/alonit-polybot-prod:0.0.6
+        image: 352708296901.dkr.ecr.eu-north-1.amazonaws.com/alonit-polybot-prod:0.0.7
 ---
 apiVersion: v1
 kind: Service
