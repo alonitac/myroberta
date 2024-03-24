@@ -8,6 +8,8 @@ pipeline {
             steps {
                 withCredentials([usernamePassword(credentialsId: 'github', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
                     sh '''
+                    printenv
+
                     git checkout releases
                     git merge origin/main
                     sed -i "s|image: .*|image: ${POLYBOT_PROD_IMG_URL}|g" k8s/prod/polybot.yaml
