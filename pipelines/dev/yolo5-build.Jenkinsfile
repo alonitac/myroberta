@@ -9,10 +9,10 @@ pipeline {
         stage('Build') {
             steps {
                 sh '''
-                cd polybot
+                cd yolo5
                 aws ecr get-login-password --region eu-north-1 | docker login --username AWS --password-stdin $ECR_URL
-                docker build -t $ECR_URL/alonit-polybot-prod:0.0.$BUILD_NUMBER .
-                docker push $ECR_URL/alonit-polybot-prod:0.0.$BUILD_NUMBER
+                docker build -t $ECR_URL/alonit-yolo5-dev:0.0.$BUILD_NUMBER .
+                docker push $ECR_URL/alonit-yolo5-dev:0.0.$BUILD_NUMBER
                 '''
             }
         }
@@ -20,7 +20,7 @@ pipeline {
         stage('Trigger Release') {
             steps {
                 build job: 'Release', wait: false, parameters: [
-                    string(name: 'POLYBOT_PROD_IMG_URL', value: "${ECR_URL}/alonit-polybot-prod:0.0.${BUILD_NUMBER}")
+                    string(name: 'IMG_URL', value: "${ECR_URL}/alonit-yolo5-dev:0.0.${BUILD_NUMBER}")
                 ]
             }
         }
